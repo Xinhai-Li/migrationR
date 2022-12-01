@@ -12,4 +12,10 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 Depends: 
     R (>= 2.10)
+Imports:
+    Distance
+    raster
+    sp
+    randomForest
+    calibrate
 LazyData: true
