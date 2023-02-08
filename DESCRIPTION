@@ -16,7 +16,7 @@ Description: This package provides tools to analyze bird migration data, and it 
   sum tracking durations (duration), estimate migration starting day (mig_day) and time (mig_hour), locate nest 
   sites (nest_locating), and plot breeding and wintering areas (plot_breeding_wintering), plot movement 
   trajectories (plot_traj), plot tracking duration (plot_track_duration), plot movement direction in a year 
-  (plot_direction), and plot daily movement distance (plot_daily_dict)..
+  (plot_direction), and plot daily movement distance (plot_daily_dict).
 License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
     license
 Encoding: UTF-8
