@@ -92,7 +92,6 @@ plot_traj(trackdata = trackdata, type = "chronic")
 
 **Figure 4. Flying trajectories of the Demoiselle Cranes. Different colors indicate different time in a year.**
 
-
 ### plot_track_duration()
 
 Plot tracking duration of all individuals.
@@ -105,5 +104,108 @@ plot_track_duration(trackdata, cex.lab=0.9, cex.axis=0.8)
 
 **Figure 5. Tracking duration for all the individuals of the Demoiselle Cranes.**
 
+
+### nest_locating()
+
+Estimate nest sites based on the most used location in the breeding season.
+
+```{r}
+# The starting time (breed.S) and ending time (breed.E) of the breeding season should be adjusted for other species
+nest_locating(trackdata, breed.S = 130, breed.E = 180, minimum.rec = 100)
+
+# Check the nest location of a single individual
+ind = trackdata[trackdata$ID==trackdata$ID[1] & trackdata$Year == trackdata$Year[1],]
+breed.S = 140; breed.E = 180
+ind = ind[ind$Day > breed.S & ind$Day < breed.E, ]
+plot(ind$Lon, ind$Lat)
+lines(ind$Lon, ind$Lat, col="grey", lwd=.5)
+LAT = round(ind$Lat, 4); LON = round(ind$Lon, 4)
+LATLON = as.character(LAT*LON*10^8) # numeric would cause no-match
+frq = sort(table(LATLON), decreasing=T)
+LAT = ind$Lat[LATLON ==  names(frq [frq==max(frq)] )][1]
+LON = ind$Lon[LATLON ==  names(frq [frq==max(frq)] )][1]
+points(LON, LAT, col=2, pch=16)
+```
+
+![Figure 6](https://github.com/Xinhai-Li/migrationR_data/blob/main/Rplot06.png)
+
+**Figure 6. Movements trajectories and estimated nest site of one Demoiselle Crane.**
+
+### dist_daily()
+
+Calculate daily movement distance (km).
+
+```{r}
+Daily.dist = dist_daily(trackdata);
+head(Daily.dist)
+# plot(Daily.dist$Day, Daily.dist$Dist2, col=as.numeric(as.factor(Daily.dist$Individual)), 
+#     xlab="Julian day", ylab="Flying distance (km)")
+```
+
+### plot_daily_dist()
+
+Plot daily movement distance across a year.
+
+```{r}
+Daily.dist = dist_daily(trackdata)
+plot_daily_dist(Daily.dist)
+```
+
+![Figure 7](https://github.com/Xinhai-Li/migrationR_data/blob/main/Rplot07.png)
+
+**Figure 7. Daily movement distance of Demoiselle Cranes across a year. Different colors indicate different individuals**
+
+### plot_direction()
+
+Plot movement directions of an individual in a year.
+
+```{r}
+ind = trackdata[trackdata$ID==trackdata$ID[1] & trackdata$Year == trackdata$Year[1],]
+plot_direction(ind)
+```
+
+![Figure 8](https://github.com/Xinhai-Li/migrationR_data/blob/main/Rplot08.png)
+
+**Figure 8. The flying directions of one Demoiselle Crane in a year.**
+
+### plot_traj_segments()
+
+Plot time series segments of movement trajectories of an individual.
+
+```{r}
+par(mar=c(4,4,4,2))
+# The colors of points from red to green indicate the locating time of the points is from old to new.
+plot_traj_segments(ind=ind, seg=4, label=F)
+```
+
+![Figure 9](https://github.com/Xinhai-Li/migrationR_data/blob/main/Rplot09.png)
+
+**Figure 9. The trajectories of a single Demoiselle Crane across four distinct periods.**
+
+```{r}
+par(mar=c(4,4,4,2))
+plot_traj_segments(ind=ind, seg=6, label=T)
+```
+
+![Figure 10](https://github.com/Xinhai-Li/migrationR_data/blob/main/Rplot10.png)
+
+**Figure 10. The trajectories of a single Demoiselle Crane across six distinct periods.**
+
+### mig_timing()
+
+Estimate the date (day) and time (hour) of starting and ending of migrations.
+
+```{r}
+timing = mig_timing(trackdata=trackdata, dist_min_day = 100, dist_min_hour = 10, dist_outlier = 150)
+timing[1:7,]
+Winter_End_Day = timing$Winter_End_Day
+Winter_End_Day = Winter_End_Day[!is.na(Winter_End_Day)]
+Winter_End_Day = Winter_End_Day[Winter_End_Day>260]
+hist(Winter_End_Day, main="", nclass=30, xlab="Julian Day")
+```
+
+
+
+**Figure 11. The starting and ending dates of wintering migration of the Demoiselle Cranes.**
 
 To implement Hetero-occurrence Species Distribution Models (HOSDMs), acquiring environmental variable data is essential, and such information can be sourced from the repository designated as "migrationR_data" at https://github.com/Xinhai-Li/migrationR_data.
