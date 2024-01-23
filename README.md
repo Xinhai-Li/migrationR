@@ -204,7 +204,7 @@ Winter_End_Day = Winter_End_Day[Winter_End_Day>260]
 hist(Winter_End_Day, main="", nclass=30, xlab="Julian Day")
 ```
 
-
+![Figure 11](https://github.com/Xinhai-Li/migrationR_data/blob/main/Rplot11.png)
 
 **Figure 11. The starting and ending dates of wintering migration of the Demoiselle Cranes.**
 
