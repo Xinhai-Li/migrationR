@@ -11,9 +11,30 @@ install_github("Xinhai-Li/migrationR", force = TRUE)
 library(migrationR)
 data(movebankdata) # 96976 occurrences of 27 Demoiselle Cranes from 2018/1/1 to 2019/9/9 at 1h interval.
 library(knitr)
-kable(head(movebankdata), "pipe")
+ncol(movebankdata)
+knitr::kable(head(movebankdata[, 1:5]), "pipe")
+knitr::kable(head(movebankdata[, 6:9]), "pipe")
 ```
- 
+
+|event.id  |timestamp     | location.long| location.lat|sensor.type     |
+|:---------|:-------------|-------------:|------------:|:---------------|
+|38DCBA5A2 |2018/1/1 0:00 |      69.40862|     21.85748|GPS-transmitter |
+|38DCBA5A2 |2018/1/1 1:00 |      69.40854|     21.85745|GPS-transmitter |
+|38DCBA5A2 |2018/1/1 2:00 |      69.40860|     21.85746|GPS-transmitter |
+|38DCBA5A2 |2018/1/1 3:00 |      69.40868|     21.85743|GPS-transmitter |
+|38DCBA5A2 |2018/1/1 4:00 |      69.40872|     21.85745|GPS-transmitter |
+|38DCBA5A2 |2018/1/1 5:00 |      69.40864|     21.85742|GPS-transmitter |
+
+|individual.taxon.canonical.name |taxon.detail       |individual.local.identifier |study.name                 |
+|:-------------------------------|:------------------|:---------------------------|:--------------------------|
+|Gruidae                         |Anthropoides virgo |hooded06_683_BFU076         |Guo Yuming's field surveys |
+|Gruidae                         |Anthropoides virgo |hooded06_683_BFU076         |Guo Yuming's field surveys |
+|Gruidae                         |Anthropoides virgo |hooded06_683_BFU076         |Guo Yuming's field surveys |
+|Gruidae                         |Anthropoides virgo |hooded06_683_BFU076         |Guo Yuming's field surveys |
+|Gruidae                         |Anthropoides virgo |hooded06_683_BFU076         |Guo Yuming's field surveys |
+|Gruidae                         |Anthropoides virgo |hooded06_683_BFU076         |Guo Yuming's field surveys |
+
+
 ## Functions
 
 The current version has 14 functions. 
