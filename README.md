@@ -89,8 +89,17 @@ Annual movement distance (km) per individual per year.
 # Some individuals were not tracked all the year. Argument n is the minimum number of days in a year
 # for calculating the distance
 Dist = dist_annual(trackdata=trackdata, n = 200) 
-Dist
+knitr::kable(Dist, "pipe")
 ```
+
+|   |ID                           | Year| Distance| numDay|
+|:--|:----------------------------|----:|--------:|------:|
+|1  |hooded06_683_BFU076          | 2018| 20574.94|    365|
+|2  |hooded06_683_BFU076          | 2019| 17721.67|    321|
+|3  |hooded07_687_BFU077          | 2018| 15871.27|    280|
+|4  |hooded21_adultHV4BFU069_1    | 2018| 17209.10|    360|
+|5  |hooded21_adultHV4BFU069_1    | 2019| 19856.54|    339|
+|14 |hooded34_136_BFU266_20180812 | 2019| 20563.93|    365|
 
 ### plot_traj()
 
@@ -219,12 +228,21 @@ Estimate the date (day) and time (hour) of starting and ending of migrations.
 
 ```{r}
 timing = mig_timing(trackdata=trackdata, dist_min_day = 100, dist_min_hour = 10, dist_outlier = 150)
-timing[1:7,]
+knitr::kable(head(timing), "pipe")
 Winter_End_Day = timing$Winter_End_Day
 Winter_End_Day = Winter_End_Day[!is.na(Winter_End_Day)]
 Winter_End_Day = Winter_End_Day[Winter_End_Day>260]
 hist(Winter_End_Day, main="", nclass=30, xlab="Julian Day")
 ```
+
+|      | Year|ID                           | Breed_Start_Day| Breed_Start_Hour| Breed_End_Day| Breed_End_Hour| Winter_Start_Day| Winter_Start_Hour| Winter_End_Day| Winter_End_Hour|
+|:-----|----:|:----------------------------|---------------:|----------------:|-------------:|--------------:|----------------:|-----------------:|--------------:|---------------:|
+|1     | 2018|hooded06_683_BFU076          |              80|               13|           126|             20|              240|                11|            310|              18|
+|33467 | 2019|hooded06_683_BFU076          |              84|               15|           121|             15|              242|                11|            304|              21|
+|8705  | 2018|hooded07_687_BFU077          |              76|               14|           128|             22|              231|                12|            281|              18|
+|12426 | 2018|hooded21_adultHV4BFU069_1    |              86|               14|           125|             22|              234|                 6|            309|              18|
+|40792 | 2019|hooded21_adultHV4BFU069_1    |              88|               14|           134|             11|              230|                12|            323|              19|
+|17778 | 2018|hooded29_140_BFU260_20180809 |              NA|               NA|            NA|             NA|              268|                13|            278|               0|
 
 ![Figure 11](https://github.com/Xinhai-Li/migrationR_data/blob/main/Rplot11.png)
 
