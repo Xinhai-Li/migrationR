@@ -16,6 +16,8 @@ knitr::kable(head(movebankdata[, 1:5]), "pipe")
 knitr::kable(head(movebankdata[, 6:9]), "pipe")
 ```
 
+**Table 1. The first six rows of the satellite tracking data for Demoiselle Cranes using the Movebank data format.**
+
 |event.id  |timestamp     | location.long| location.lat|sensor.type     |
 |:---------|:-------------|-------------:|------------:|:---------------|
 |38DCBA5A2 |2018/1/1 0:00 |      69.40862|     21.85748|GPS-transmitter |
@@ -53,11 +55,15 @@ knitr::kable(trackdata[1:3,], "pipe")
 knitr::kable(table(trackdata$ID), "pipe")
 ```
 
+**Table 2. The first three rows of satellite tracking data for Demoiselle Cranes formatted according to the migrationR data structure and augmented with additional variables.**
+
 |ID                  |Time                |      Lon|      Lat| Year| Month| Day| Hour| Day_fine|      Dist| Time_interval|     Speed| Direction|     North|  Redirect|
 |:-------------------|:-------------------|--------:|--------:|----:|-----:|---:|----:|--------:|---------:|-------------:|---------:|---------:|---------:|---------:|
 |hooded06_683_BFU076 |2018-01-01 00:00:00 | 69.40862| 21.85748| 2018|     1|   1|    0| 1.000000|        NA|            NA|        NA|        NA|        NA|        NA|
 |hooded06_683_BFU076 |2018-01-01 01:00:00 | 69.40854| 21.85745| 2018|     1|   1|    1| 1.041667| 0.0088982|             1| 0.0088982| 248.03073| 0.3779485|        NA|
 |hooded06_683_BFU076 |2018-01-01 02:00:00 | 69.40860| 21.85746| 2018|     1|   1|    2| 1.083333| 0.0062866|             1| 0.0062866|  79.83361| 0.5564799| -168.1971|
+
+**Table 3. Individual IDs of Demoiselle Cranes and the corresponding number of occurrences.**
 
 |Var1                         |  Freq|
 |:----------------------------|-----:|
@@ -126,6 +132,8 @@ Annual movement distance (km) per individual per year.
 Dist = dist_annual(trackdata=trackdata, n = 200) 
 knitr::kable(Dist, "pipe")
 ```
+
+**Table 4. Annual flying distance (km) of Demoiselle Crane individuals and number of days with valid records in the year.**
 
 |   |ID                           | Year| Distance| numDay|
 |:--|:----------------------------|----:|--------:|------:|
@@ -269,6 +277,8 @@ Winter_End_Day = Winter_End_Day[!is.na(Winter_End_Day)]
 Winter_End_Day = Winter_End_Day[Winter_End_Day>260]
 hist(Winter_End_Day, main="", nclass=30, xlab="Julian Day")
 ```
+
+**Table 5. Estimated date (day) and time (hour) of starting and ending of migrations for Demoiselle Crane individuals.**
 
 |      | Year|ID                           | Breed_Start_Day| Breed_Start_Hour| Breed_End_Day| Breed_End_Hour| Winter_Start_Day| Winter_Start_Hour| Winter_End_Day| Winter_End_Hour|
 |:-----|----:|:----------------------------|---------------:|----------------:|-------------:|--------------:|----------------:|-----------------:|--------------:|---------------:|
