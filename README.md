@@ -31,4 +31,22 @@ trackdata[1:3,]
 table(trackdata$ID)
 ```
 
+### plot_breeding_wintering()
+
+Plot breeding area, wintering area and migration routes of a population.
+
+```{r}
+plot_breeding_wintering(trackdata = trackdata, ext.par=3, breed.start=100,
+                        breed.end=210, winter.start=1, winter.end=60,
+                        lat.min.b = -90, lat.max.w = 90,
+                        breed.percent = c(80, 60, 40), winter.percent = c(99, 95, 90))
+```
+
+![alt text](https://github.com/ Xinhai-Li/migrationR_data/blob/main/Rplot01.png?raw=true)
+
+**Figure 1. Breeding area (yellow), wintering area (blue) and migration routes of the Demoiselle Cranes**
+
+
+
+
 To implement Hetero-occurrence Species Distribution Models (HOSDMs), acquiring environmental variable data is essential, and such information can be sourced from the repository designated as "migrationR_data" at https://github.com/Xinhai-Li/migrationR_data.
