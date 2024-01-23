@@ -9,7 +9,7 @@ The R package migrationR is designed to efficiently process satellite telemetry 
 library(devtools)
 install_github("Xinhai-Li/migrationR", force = TRUE)
 library(migrationR)
-data(movebankdata)
+data(movebankdata) # 96976 occurrences of 27 Demoiselle Cranes from 2018/1/1 to 2019/9/9 at 1h interval.
 head(movebankdata)
 ```
  
