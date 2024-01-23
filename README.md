@@ -293,4 +293,20 @@ hist(Winter_End_Day, main="", nclass=30, xlab="Julian Day")
 
 **Figure 11. The starting and ending dates of wintering migration of the Demoiselle Cranes.**
 
+### HOSDM()
+
+HOSDM() facilitates the implementation of Hetero-occurrence Species Distribution Models (HOSDMs). These are innovative individual-based species distribution models that specialize in discerning between different types of species occurrences with the ultimate goal of boosting model accuracy. Notably, HOSDMs have been specifically designed for optimal utilization of time-series telemetry data derived from satellites.
+
 To implement Hetero-occurrence Species Distribution Models (HOSDMs), acquiring environmental variable data is essential, and such information can be sourced from the repository designated as "migrationR_data" at https://github.com/Xinhai-Li/migrationR_data.
+
+```{r}
+library(raster)
+BioClim <- brick('Env_Poyang.grd')
+data(HOSDMdata)
+results = HOSDM(trackdata = HOSDMdata, prediction=F, buffer=0.1, absence=30, Envlayer=BioClim)
+results[[1]]
+
+# Predicted habitat suitability
+plot(results[[2]][[1]], main=paste("Roosting habitat for individual", ind[1], sep=" " ))
+plot(results[[3]][[1]], main=paste("Foraging habitat for individual", ind[1], sep=" " ))
+```
