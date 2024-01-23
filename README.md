@@ -42,7 +42,8 @@ plot_breeding_wintering(trackdata = trackdata, ext.par=3, breed.start=100,
                         breed.percent = c(80, 60, 40), winter.percent = c(99, 95, 90))
 ```
 
-![Figure 1](https://github.com/ Xinhai-Li/migrationR_data/blob/main/Fig.01.jpg)
+![Figure 1. Breeding area (yellow), wintering area (blue) and migration routes of the Demoiselle Cranes](https://github.com/Xinhai-Li/migrationR_data/blob/main/Rplot01.png)
+
 
 **Figure 1. Breeding area (yellow), wintering area (blue) and migration routes of the Demoiselle Cranes**
 
