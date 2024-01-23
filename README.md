@@ -49,9 +49,44 @@ library(chron)
 library(lubridate)
 library(argosfilter)
 trackdata = as_trackdata(data = movebankdata, min_time_interval = 6)
-trackdata[1:3,]
-table(trackdata$ID)
+knitr::kable(trackdata[1:3,], "pipe")
+knitr::kable(table(trackdata$ID), "pipe")
 ```
+
+|ID                  |Time                |      Lon|      Lat| Year| Month| Day| Hour| Day_fine|      Dist| Time_interval|     Speed| Direction|     North|  Redirect|
+|:-------------------|:-------------------|--------:|--------:|----:|-----:|---:|----:|--------:|---------:|-------------:|---------:|---------:|---------:|---------:|
+|hooded06_683_BFU076 |2018-01-01 00:00:00 | 69.40862| 21.85748| 2018|     1|   1|    0| 1.000000|        NA|            NA|        NA|        NA|        NA|        NA|
+|hooded06_683_BFU076 |2018-01-01 01:00:00 | 69.40854| 21.85745| 2018|     1|   1|    1| 1.041667| 0.0088982|             1| 0.0088982| 248.03073| 0.3779485|        NA|
+|hooded06_683_BFU076 |2018-01-01 02:00:00 | 69.40860| 21.85746| 2018|     1|   1|    2| 1.083333| 0.0062866|             1| 0.0062866|  79.83361| 0.5564799| -168.1971|
+
+|Var1                         |  Freq|
+|:----------------------------|-----:|
+|hooded06_683_BFU076          | 16029|
+|hooded07_687_BFU077          |  3502|
+|hooded21_adultHV4BFU069_1    | 12988|
+|hooded29_140_BFU260_20180809 |  1343|
+|hooded30_138_BFU262_20180811 |  1246|
+|hooded31_133_BFU263_20180811 |  1316|
+|hooded32_134_BFU264_20180811 |  3879|
+|hooded33_135_BFU265_20180811 |  5297|
+|hooded34_136_BFU266_20180812 | 12509|
+|hooded35_137_BFU267_20180816 |  1548|
+|hooded38_NJGF006_20190717    |  2031|
+|hooded39_NJGF007_20190717    |  2073|
+|hooded40_NJGF008_20190719    |  1658|
+|hooded45_NJGF015_20190723    |  1896|
+|hooded46_NJGF017_20190723    |  1691|
+|hooded47_NJGF071_20190724    |  2715|
+|hooded48_NJGF072_20190726    |  2466|
+|hooded49_NJGF073_20190727    |  2039|
+|hooded50_NJGF074_20190727    |  2038|
+|hooded51_NJGF075_20190727    |  2960|
+|hooded52_NJGF076_20190801    |  3142|
+|hooded53_NJGF077_20190802    |  1684|
+|hooded54_NJGF078_20190802    |  2016|
+|hooded55_BFU282_20190802     |  1738|
+|hooded56_BFU285_20190803     |  3516|
+|hooded57_BFU286_20190803     |  3437|
 
 ### plot_breeding_wintering()
 
@@ -197,7 +232,7 @@ plot_direction(ind)
 
 ![Figure 8](https://github.com/Xinhai-Li/migrationR_data/blob/main/Rplot08.png)
 
-**Figure 8. The flying directions of one Demoiselle Crane in a year.**
+**Figure 8. The flying directions of one Demoiselle Crane in a year. The color gradient, transitioning from green to red, represents the progression of Julian day, ranging from 1 to 365.**
 
 ### plot_traj_segments()
 
