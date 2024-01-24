@@ -12,8 +12,8 @@ library(migrationR)
 data(movebankdata) # 96976 occurrences of 27 Demoiselle Cranes from 2018/1/1 to 2019/9/9 at 1h interval.
 library(knitr)
 ncol(movebankdata)
-knitr::kable(head(movebankdata[, 1:5]), "pipe")
-knitr::kable(head(movebankdata[, 6:9]), "pipe")
+knitr::kable(head(movebankdata[, 1:5]), "pipe") # Table 1 upper panel
+knitr::kable(head(movebankdata[, 6:9]), "pipe") # Table 1 lower panel
 ```
 
 **Table 1. The first six rows of the satellite tracking data for Demoiselle Cranes using the Movebank data format.**
@@ -51,8 +51,8 @@ library(chron)
 library(lubridate)
 library(argosfilter)
 trackdata = as_trackdata(data = movebankdata, min_time_interval = 6)
-knitr::kable(trackdata[1:3,], "pipe")
-knitr::kable(table(trackdata$ID), "pipe")
+knitr::kable(trackdata[1:3,], "pipe") # Table 2
+knitr::kable(table(trackdata$ID), "pipe") # Table 3
 ```
 
 **Table 2. The first three rows of satellite tracking data for Demoiselle Cranes formatted according to the migrationR data structure and augmented with additional variables.**
@@ -130,7 +130,7 @@ Annual movement distance (km) per individual per year.
 # Some individuals were not tracked all the year. Argument n is the minimum number of days in a year
 # for calculating the distance
 Dist = dist_annual(trackdata=trackdata, n = 200) 
-knitr::kable(Dist, "pipe")
+knitr::kable(Dist, "pipe") # Table 4
 ```
 
 **Table 4. Annual flying distance (km) of Demoiselle Crane individuals and number of days with valid records in the year.**
@@ -271,11 +271,11 @@ Estimate the date (day) and time (hour) of starting and ending of migrations.
 
 ```{r}
 timing = mig_timing(trackdata=trackdata, dist_min_day = 100, dist_min_hour = 10, dist_outlier = 150)
-knitr::kable(head(timing), "pipe")
+knitr::kable(head(timing), "pipe") # Table 5
 Winter_End_Day = timing$Winter_End_Day
 Winter_End_Day = Winter_End_Day[!is.na(Winter_End_Day)]
 Winter_End_Day = Winter_End_Day[Winter_End_Day>260]
-hist(Winter_End_Day, main="", nclass=30, xlab="Julian Day")
+hist(Winter_End_Day, main="", nclass=30, xlab="Julian Day") # Figure 11
 ```
 
 **Table 5. Estimated date (day) and time (hour) of starting and ending of migrations for Demoiselle Crane individuals.**
