@@ -166,6 +166,47 @@ plot_traj(trackdata = trackdata, type = "chronic")
 
 **Figure 4. Flying trajectories of the Demoiselle Cranes. Different colors indicate different time in a year.**
 
+### duration()
+
+Calculate tracking duration (days) of all individuals.
+
+```{r}
+Dur = duration(trackdata)
+knitr::kable(Dur, "pipe")
+```
+
+**Table 5. Tracking durations (days) for each individual Demoiselle Crane.**
+
+|Individual                    | Duration| No_record|
+|:-----------------------------|--------:|---------:|
+|hooded06_683_BFU076           |      730|     16029|
+|hooded07_687_BFU077           |      281|      3502|
+|hooded19_2age_leftHA5BFU032_1 |       34|       219|
+|hooded21_adultHV4BFU069_1     |      730|     12988|
+|hooded29_140_BFU260_20180809  |       56|      1343|
+|hooded30_138_BFU262_20180811  |       60|      1246|
+|hooded31_133_BFU263_20180811  |       58|      1316|
+|hooded32_134_BFU264_20180811  |      167|      3879|
+|hooded33_135_BFU265_20180811  |      221|      5297|
+|hooded34_136_BFU266_20180812  |      506|     12509|
+|hooded35_137_BFU267_20180816  |      312|      1548|
+|hooded38_NJGF006_20190717     |       88|      2031|
+|hooded39_NJGF007_20190717     |       91|      2073|
+|hooded40_NJGF008_20190719     |       74|      1658|
+|hooded45_NJGF015_20190723     |       82|      1896|
+|hooded46_NJGF017_20190723     |       83|      1691|
+|hooded47_NJGF071_20190724     |      154|      2715|
+|hooded48_NJGF072_20190726     |      110|      2466|
+|hooded49_NJGF073_20190727     |       80|      2039|
+|hooded50_NJGF074_20190727     |       80|      2038|
+|hooded51_NJGF075_20190727     |      145|      2960|
+|hooded52_NJGF076_20190801     |      142|      3142|
+|hooded53_NJGF077_20190802     |       67|      1684|
+|hooded54_NJGF078_20190802     |      150|      2016|
+|hooded55_BFU282_20190802      |       73|      1738|
+|hooded56_BFU285_20190803      |      150|      3516|
+|hooded57_BFU286_20190803      |      150|      3437|
+
 ### plot_track_duration()
 
 Plot tracking duration of all individuals.
@@ -271,14 +312,14 @@ Estimate the date (day) and time (hour) of starting and ending of migrations.
 
 ```{r}
 timing = mig_timing(trackdata=trackdata, dist_min_day = 100, dist_min_hour = 10, dist_outlier = 150)
-knitr::kable(head(timing), "pipe") # Table 5
+knitr::kable(head(timing), "pipe") # Table 6
 Winter_End_Day = timing$Winter_End_Day
 Winter_End_Day = Winter_End_Day[!is.na(Winter_End_Day)]
 Winter_End_Day = Winter_End_Day[Winter_End_Day>260]
 hist(Winter_End_Day, main="", nclass=30, xlab="Julian Day") # Figure 11
 ```
 
-**Table 5. Estimated date (day) and time (hour) of starting and ending of migrations for Demoiselle Crane individuals.**
+**Table 6. Estimated date (day) and time (hour) of starting and ending of migrations for Demoiselle Crane individuals.**
 
 |      | Year|ID                           | Breed_Start_Day| Breed_Start_Hour| Breed_End_Day| Breed_End_Hour| Winter_Start_Day| Winter_Start_Hour| Winter_End_Day| Winter_End_Hour|
 |:-----|----:|:----------------------------|---------------:|----------------:|-------------:|--------------:|----------------:|-----------------:|--------------:|---------------:|
