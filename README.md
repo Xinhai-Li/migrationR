@@ -310,3 +310,11 @@ results[[1]]
 plot(results[[2]][[1]], main=paste("Roosting habitat for individual", ind[1], sep=" " ))
 plot(results[[3]][[1]], main=paste("Foraging habitat for individual", ind[1], sep=" " ))
 ```
+
+### flying()
+
+Use packages anipaths, magick and animation to creat animated flying trajectories with transparent background. It is under construction.
+
+![Figure 12](https://github.com/Xinhai-Li/migrationR_data/blob/main/cranes%20at%20Poyang%20Lake_ss.gif)
+
+**Figure 12. The animated flying trajectories of Demoiselle Cranes at Poyang Lake from 2017 to 2023.**
